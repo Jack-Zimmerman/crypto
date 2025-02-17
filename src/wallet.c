@@ -53,7 +53,6 @@ void sign_transaction(Wallet * wallet, Transaction * tx){
 
     if (!res){
         printf("Signature failed\n");
-
         return;
     }
     
