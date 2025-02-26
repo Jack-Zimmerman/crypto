@@ -10,11 +10,11 @@ typedef struct Transaction {
     unsigned char sender[PUBLIC_KEY_LENGTH];
     unsigned char recipient[PUBLIC_KEY_LENGTH];
     unsigned char signature[SIGNATURE_LENGTH];
-    unsigned long int amount;
+    unsigned long long int amount;
     int timestamp; 
 } Transaction;
 
-void init_transaction(Transaction *, unsigned char *, unsigned char *, unsigned long int);
+void init_transaction(Transaction *, unsigned char *, unsigned char *, unsigned long long int);
 
 
 #endif

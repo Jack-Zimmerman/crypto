@@ -15,17 +15,29 @@ int main(void){
     init_wallet(&sender); 
     init_wallet(&reciever);
 
-    init_transaction(&tx, sender.pubkey, reciever.pubkey, 1000);
-    sign_transaction(&sender, &tx);
+    for (int i = 0; i < 10000; i++){
+        init_transaction(&tx, sender.pubkey, reciever.pubkey, 1000);
+        sign_transaction(&sender, &tx);
 
-    Block blk;
+        Block blk;
 
-    init_block(&blk, &sender, 10000000, 0);
-    add_transaction_to_block(&blk, &tx);
+        init_block(&blk, &sender, 10000000, i);
+        add_transaction_to_block(&blk, &tx);
+        complete_block(&blk);
 
-    for (int i = 0; i < blk.transaction_num; i++)
-    {
-        printf("%d\n", blk.transactions[0]->amount);
+        int res = write_block_to_file(&blk, "test.dat");
+    }
+
+    Block * blks = read_blocks_from_file("test.dat", 10000);
+
+    for (int a = 0; a < 10000; a++){
+        printf("%d ",blks[a].height);
+        for (int i = 0; i < HASH_SIZE; i++){
+            printf("%x", blks[a].hash[i]);
+        }
+        printf("\n");
     }
 }
+
+
 

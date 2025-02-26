@@ -5,7 +5,7 @@
 #include <time.h>
 
 //create transaction with needed values
-void init_transaction(Transaction * tx, unsigned char * sender, unsigned char * recipient, unsigned long int quantity) {
+void init_transaction(Transaction * tx, unsigned char * sender, unsigned char * recipient, unsigned long long int quantity) {
 
     //copy sender and recipient into tx
     memcpy(&tx->sender, sender, PUBLIC_KEY_LENGTH);

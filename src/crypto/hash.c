@@ -6,13 +6,13 @@
 #include "sha256.c"
 
 //long to string
-unsigned char * lts(unsigned long int * numPtr){
+unsigned char * lts(unsigned long long int * numPtr){
     unsigned char * byteArr = (unsigned char *)malloc(8);
     
     memcpy(byteArr, (void*)numPtr, 8);
 }
 
-unsigned char * sha256_int(unsigned long int input){
+unsigned char * sha256_int(unsigned long long int input){
     SHA256_CTX ctx;
     unsigned char * hashBuff = (unsigned char*)malloc(SHA256_BLOCK_SIZE);
 
